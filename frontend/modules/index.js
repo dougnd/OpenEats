@@ -19,7 +19,7 @@ const messages = require('../locale/'+process.env.LOCALE+'.json');
 import NavBar from './header/containers/NavBar'
 import Footer from './base/components/Footer'
 import NotFound from './base/components/NotFound'
-import Login from './account/components/Login'
+import Login from './account/containers/Login'
 import News from './news/components/News'
 import List from './list/containers/List'
 import Browse from './browse/components/Browse'
@@ -40,6 +40,7 @@ require("./base/css/print.css");
 // Create Redux Store
 let store = createStore(
   reducer,
+  { user: JSON.parse(localStorage.getItem('user')) || { token: null } },
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
   )

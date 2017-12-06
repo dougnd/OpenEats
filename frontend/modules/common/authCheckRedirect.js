@@ -1,8 +1,7 @@
-import AuthStore from '../account/stores/AuthStore'
 import history from './history'
 
 const authCheckRedirect = () => {
-  if (!AuthStore.isAuthenticated()) {
+  if (!localStorage.getItem('user')) {
     history.replace('/login');
   }
 };
