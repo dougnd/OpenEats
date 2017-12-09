@@ -9,6 +9,7 @@ import * as RecipeGroupActions from '../actions/RecipeGroupActions'
 import * as RecipeListActions from '../actions/RecipeListActions'
 import * as StatusActions from '../actions/StatusActions'
 import bindIndexToActionCreators from '../../common/bindIndexToActionCreators'
+import documentTitle from '../../common/documentTitle'
 
 import Loading from '../../base/components/Loading'
 import RecipeForm from '../components/RecipeForm'
@@ -66,6 +67,7 @@ class From extends React.Component {
     let id = this.props.match.params.id || 0;
     let selectForm = form.find(t => t.id == id);
     if (selectForm) {
+      documentTitle(form.title);
       return (
           <RecipeForm
             tags={ tags }
