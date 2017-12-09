@@ -13,14 +13,6 @@ class Login extends React.Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.match.params.recipe !== this.props.match.params.recipe) {
-  //     nextProps.recipeItemActions.reset();
-  //     nextProps.recipeActions.load(nextProps.match.params.recipe);
-  //     window.scrollTo(0, 0);
-  //   }
-  // }
-
   render() {
     let { user, authActions } = this.props;
     return (
@@ -32,14 +24,10 @@ class Login extends React.Component {
   }
 }
 
-// Recipe.propTypes = {
-//   recipes: PropTypes.array.isRequired,
-//   lists: PropTypes.array.isRequired,
-//   status: PropTypes.string.isRequired,
-//   match: PropTypes.object.isRequired,
-//   recipeActions: PropTypes.object.isRequired,
-//   recipeItemActions: PropTypes.object.isRequired,
-// };
+Login.propTypes = {
+  user: PropTypes.object.isRequired,
+  authActions: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
   user: state.user,
