@@ -104,6 +104,10 @@ class RatingViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         query = Recipe.objects
 
+        # If user is anonymous, restrict recipes to public.
+        if not self.request.user.is_authenticated:
+            query = query.filter(public=True)
+
         filter_set = {}
         if 'cuisine' in self.request.query_params:
             try:
