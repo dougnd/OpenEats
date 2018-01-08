@@ -41,12 +41,12 @@ class CuisineCountViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         query = Recipe.objects
+        filter_set = {}
 
         # If user is anonymous, restrict recipes to public.
         if not self.request.user.is_authenticated:
-            query = query.filter(public=True)
+            filter_set['public']=True
 
-        filter_set = {}
         if 'course' in self.request.query_params:
             try:
                 filter_set['course'] = Course.objects.get(
@@ -98,12 +98,12 @@ class CourseCountViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         query = Recipe.objects
+        filter_set = {}
 
         # If user is anonymous, restrict recipes to public.
         if not self.request.user.is_authenticated:
-            query = query.filter(public=True)
+            filter_set['public']=True
 
-        filter_set = {}
         if 'cuisine' in self.request.query_params:
             try:
                 filter_set['cuisine'] = Cuisine.objects.get(
